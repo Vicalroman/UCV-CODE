@@ -4,7 +4,7 @@ x , y = float(input("Escriba un valor para X: ")) , float(input("Escriba un valo
 r = (x**2 + y**2)**(1/2) #Calculo de r
 print("r es igual a " + str(float(r))) #La funcion print imprime en pantalla lo indicado en su argumento.
 #Theta hay que condicionarlo para que arroje el resultado en el cuadrante solicitado
-if x == 0: #S
+if x == 0: #Si x es igual a cero el arctg tiende a infinito y esto da como resultado 90°
     print("Theta es igual a 90°")
 else:
     t= math.atan(y/x)
@@ -20,4 +20,4 @@ else:
     elif x > 0 and y == 0 :
         print("Theta es igual a 0° " + str(270 - t1)+"°")
     else:
-        print ("Theta es igual a " + str(270 - t1)+"°")
+        print ("Theta es igual a " + str(270 - t1) + "°")
