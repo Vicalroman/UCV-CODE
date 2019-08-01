@@ -1,38 +1,37 @@
 """Diseñe un programa que indique si tres puntos dados por sus coordenadas(x, y)
 forman triángulo y en caso de formarlo debe indicarse que tipo de triángulo
 forma."""
-x,y = int(input("Ingrese el primer punto: \nx: ")), int(input("y: "))
-x2,y2 = int(input("Ingrese el segundo punto: \nx: ")), int(input("y: "))
-x3,y3 = int(input("Ingrese el tercer punto: \nx: ")), int(input("y: "))
+x,y = float(input("Ingrese el primer punto: \nx: ")), float(input("y: "))
+x2,y2 = float(input("Ingrese el segundo punto: \nx: ")), float(input("y: "))
+x3,y3 = float(input("Ingrese el tercer punto: \nx: ")), float(input("y: "))
 import math
 def ladosDelTriangulo(a,b,a2,b2):
     l =((a2-a)**2 + (b2-b)**2)**0.5
-    return l
+    return round(l,2)
 def angulosDelTriangulo(a,b,c):
-    angle = math.degrees(math.acos((a**2 + b**2 - c**2)//(2*a*b)))/2
-    return angle
+    angle = math.degrees(math.acos((a**2 + b**2 - c**2)/(2*a*b)))
+    return round(angle)
 def tipoDeTriangulo():
     a = ladosDelTriangulo(x2,y2,x3,y3)
     b = ladosDelTriangulo(x,y,x2,y2)
     c = ladosDelTriangulo(x3,y3,x,y)
-    #print(a,b,c)
+    print(a,b,c)
     alpha = angulosDelTriangulo(a,b,c)
     beta = angulosDelTriangulo(a,c,b)
     gamma = angulosDelTriangulo(b,c,a)
-    #print(alpha,beta,gamma)
-    if alpha or gamma or beta == 90:
-        print("Es un triagulo rectangulo.")
-    if alpha == gamma == beta:
+    print(alpha,beta,gamma)
+    if alpha == gamma and beta == alpha and beta == gamma:
         print("Es un triangulo equilatero.")
-    if alpha > 90 or gamma > 90 or beta > 90:
+    elif alpha == 90 or gamma == 90 or beta == 90:
+        print("Es un triagulo rectangulo.")
+    elif alpha > 90 or gamma > 90 or beta > 90:
         print("Es un triangulo obtuso")
-    if alpha < 90 and gamma < 90 and beta < 90:
-        print("Es un triangulo acuso")
-    if a == b or b == c or c == a:
+    elif alpha < 90 and gamma < 90 and beta < 90:
+        print("Es un triangulo acutangulo")
+    if (a == b or b == c or c == a) and not (a == b and b== c and c == a):
         print("Es un triangulo isoceles.")
-    if alpha != gamma != beta:
+    elif alpha != gamma and alpha != beta and beta != gamma:
         print("Es un triangulo escaleno")
-
 m = 0
 if x == x2 and x == x3:
     print("No forman un triangulo")
